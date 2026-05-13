@@ -671,7 +671,7 @@
             margin-top: 48px;
             border-radius: 24px 24px 0 0;
         }
-        @media (max-width: 780px) {
+        @media (max-width: 700px) {
             .grid-panels, .two-columns, .ia-usage { grid-template-columns: 1fr; }
             .top-bar { flex-direction: column; }
             .atl-banner { flex-direction: column; text-align: center; }
@@ -1122,43 +1122,98 @@
 }
 
 .logo-area{
-    position: relative;
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 20px;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    padding: 15px 30px;
 }
 
-/* Imagen superior izquierda */
+/* Logos laterales */
 .top-logo{
-    position: absolute;
-    top: -10px;
-    left: -10px;
+    width: 160px; /* mismo tamaño */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .top-logo img{
-    width: 90px;
-    height: 90px;
+    width: 100%;
+    max-width: 180px;
+    height: auto;
     object-fit: contain;
 }
-
-.logo-img{
+/* Logos laterales */
+.top-logo1{
+    width: 260px; /* mismo tamaño */
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 10px;
-    font-size: 22px;
-    font-weight: bold;
+}
+
+.top-logo1 img{ width: 190%; max-width: 280px; height: auto; object-fit:
+ contain; }
+/* Logos laterales */
+
+
+/* Texto central */
+.logo-text{
+    flex: 1;
+    text-align: center;
 }
 
 .logo-text h2{
-        margin: 0;
-    font-size: 24px;
-    margin-left: 80px; /* mueve a la derecha */
+    margin: 0;
+    font-size: 32px;
+    font-weight: bold;
 }
 
 .logo-text p{
-    margin: 0;
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+.big-icons{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 25px;
+}
+
+.big-card{
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.big-card:hover{
+    transform: translateY(-8px);
+}
+
+.big-card img{
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.big-card i{
+    font-size: 40px;
+    color: #c40000;
+    margin-bottom: 12px;
+}
+
+.big-card h3{
+    margin: 10px 0 5px;
+    font-size: 22px;
+}
+
+.big-card p{
     font-size: 14px;
+    color: #555;
 }
     </style>
 </head>
@@ -1168,15 +1223,24 @@
     <div class="container">
         <div class="top-bar">
             <div class="logo-area">
-                <!-- Imagen superior izquierda -->
-                <div class="top-logo">
-                    <img src="imagenes/banner.png" alt="Logo Saco Oliveros">
-                </div>
-                <div class="logo-text">
-                    <h2>Monterrico</h2>
-                    <p><p>Liderazgo Global · Transformando el Talento Peruano</p></p>
-                </div>
-            </div>
+
+    <!-- Logo izquierda -->
+    <div class="top-logo">
+        <img src="imagenes/banner.png" alt="Logo Saco Oliveros">
+    </div>
+
+    <!-- Texto central -->
+    <div class="logo-text">
+        <h2>Monterrico</h2>
+        <p>Liderazgo Global · Transformando el Talento Peruano</p>
+    </div>
+
+    <!-- Logo derecha -->
+    <div class="top-logo1">
+        <img src="imagenes/banner1.png" alt="Logo Saco Oliveros">
+    </div>
+
+</div>
             <div class="main-nav">
                 <button data-page="home" class="nav-btn active">Inicio</button>
                 <button data-page="asignaturas" class="nav-btn">Asignaturas</button>
@@ -1208,11 +1272,34 @@
             </div>
         </div>
         <div class="big-icons">
-            <div class="big-card" data-nav="asignaturas"><i class="fas fa-pen-fancy"></i><h3>EE Monografía</h3><p>Extended Essay</p></div>
-            <div class="big-card" data-nav="asignaturas"><i class="fas fa-brain"></i><h3>TOK</h3><p>Teoría del Conocimiento</p></div>
-            <div class="big-card" data-nav="asignaturas"><i class="fas fa-hands-helping"></i><h3>CAS</h3><p>Creatividad, Actividad, Servicio</p></div>
-            <div class="big-card" data-nav="asignaturas"><i class="fas fa-book-open"></i><h3>ASIGNATURAS</h3><p>Recursos por Grupo</p></div>
-        </div>
+
+    <div class="big-card" data-nav="asignaturas">
+        <img src="imagenes/mono.png" alt="EE">
+        <!--<i class="fas fa-pen-fancy"></i>-->
+        <h3>EE Monografía</h3>
+        <p>Extended Essay</p>
+    </div>
+
+    <div class="big-card" data-nav="asignaturas">
+        <img src="imagenes/Tok.png" alt="TOK">
+        <h3>TOK</h3>
+        <p>Teoría del Conocimiento</p>
+    </div>
+
+    <div class="big-card" data-nav="asignaturas">
+        <img src="imagenes/cas.png" alt="CAS">
+        <h3>CAS</h3>
+        <p>Creatividad, Actividad, Servicio</p>
+    </div>
+
+    <div class="big-card" data-nav="asignaturas">
+        <img src="img/asignaturas.png" alt="Asignaturas">
+        <i class="fas fa-book-open"></i>
+        <h3>ASIGNATURAS</h3>
+        <p>Recursos por Grupo</p>
+    </div>
+
+</div>
         <div class="action-buttons">
             <button class="action-btn" data-nav="asignaturas"><i class="fas fa-file-alt"></i> Monografía (EE)</button>
             <button class="action-btn" data-nav="asignaturas"><i class="fas fa-comment-dots"></i> TOK</button>
