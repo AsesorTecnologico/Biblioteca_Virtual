@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Saco Oliveros Monterrico | IB Recursos por Asignatura</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f9ff;
+            color: #0a1c2f;
+            line-height: 1.5;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #dee8f2;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e4a76;
+            border-radius: 10px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header idéntico al anterior */
+        .header {
+            background: white;
+            border-bottom: 2px solid #d4af37;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .top-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 12px 0;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-img {
+            background: #0a2946;
+            border-radius: 50px;
+            padding: 8px 14px;
+            color: #d4af37;
+            font-weight: 800;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo-text h2 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #1e4a76;
+        }
+        .logo-text p {
+            font-size: 0.7rem;
+            color: #b8860b;
+            font-weight: 600;
+        }
+
+        .main-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            background: #f8fafd;
+            padding: 8px 20px;
+            border-radius: 60px;
+        }
+        .main-nav button {
+            background: none;
+            border: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            color: #1f3a5f;
+            transition: all 0.2s;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .main-nav button.active, .main-nav button:hover {
+            color: #d4af37;
+            border-bottom-color: #d4af37;
+        }
+
+        /* PÁGINA DE ASIGNATURAS - BANNER ESPECÍFICO */
+        .subjects-banner {
+            background: linear-gradient(115deg, #0a2946, #1e4a76);
+            border-radius: 32px;
+            margin: 28px 0 24px 0;
+            padding: 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.2);
+        }
+        .subjects-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            background-position: center 20%;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+        .banner-content h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .banner-content p {
+            font-size: 1rem;
+            max-width: 650px;
+            margin: 10px auto 0;
+            opacity: 0.9;
+        }
+
+        /* Controles y notas */
+        .subjects-control {
+            background: white;
+            border-radius: 28px;
+            padding: 28px;
+            margin: 20px 0 32px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.03);
+            border: 1px solid #e0edf5;
+        }
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        .filter-group label {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1e4a76;
+        }
+        .custom-select {
+            background: #f4f8fe;
+            border-radius: 60px;
+            padding: 12px 24px;
+            border: 1px solid #cbdde9;
+            font-size: 1rem;
+            font-weight: 500;
+            outline: none;
+            cursor: pointer;
+            min-width: 200px;
+            transition: 0.2s;
+        }
+        .custom-select:focus {
+            border-color: #d4af37;
+            box-shadow: 0 0 0 3px rgba(212,175,55,0.2);
+        }
+        .note-exclamation {
+            background: #fff8e7;
+            border-left: 6px solid #d4af37;
+            padding: 16px 20px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 20px;
+        }
+        .note-exclamation i {
+            font-size: 1.8rem;
+            color: #d4af37;
+        }
+        .note-exclamation p {
+            font-size: 0.9rem;
+            color: #5a4a1a;
+            margin: 0;
+        }
+
+        /* Tarjetas de recursos por grupo */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 28px;
+            margin: 32px 0;
+        }
+        .subject-card {
+            background: white;
+            border-radius: 28px;
+            padding: 24px;
+            transition: all 0.25s;
+            border: 1px solid #e2edf7;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.02);
+        }
+        .subject-card:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+        }
+        .subject-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #1e4a76;
+        }
+        .subject-card .level-badge {
+            background: #eef3fc;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+        .resource-list {
+            list-style: none;
+            margin-top: 16px;
+        }
+        .resource-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ecf3f9;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .resource-list li i {
+            color: #d4af37;
+            width: 20px;
+        }
+
+        /* Otras páginas (home, core, etc.) */
+        .page {
+            display: none;
+            animation: fade 0.3s ease;
+        }
+        .active-page {
+            display: block;
+        }
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(8px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 24px;
+            margin: 28px 0;
+        }
+        .info-card {
+            background: white;
+            border-radius: 28px;
+            padding: 22px;
+            border: 1px solid #e0edf5;
+        }
+        footer {
+            background: #0a1c2f;
+            color: #cfdfed;
+            padding: 32px 0;
+            margin-top: 48px;
+            border-radius: 24px 24px 0 0;
+        }
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 16px;
+        }
+        .footer-links a {
+            color: #d4af37;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+        .values {
+            text-align: center;
+            font-size: 0.75rem;
+            margin: 16px 0;
+        }
+        @media (max-width: 780px) {
+            .top-bar { flex-direction: column; align-items: stretch; }
+            .main-nav { justify-content: center; }
+            .banner-content h1 { font-size: 1.5rem; }
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #1e4a76;
+            border-radius: 60px;
+            padding: 6px 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-outline:hover {
+            background: #1e4a76;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="container">
+        <div class="top-bar">
+            <div class="logo-area">
+                <div class="logo-img">
+                    <i class="fas fa-landmark"></i>
+                    <span>SACO OLIVEROS</span>
+                </div>
+                <div class="logo-text">
+                    <h2>Monterrico</h2>
+                    <p>Liderazgo Global · Transformando el Talento Peruano</p>
+                </div>
+            </div>
+            <div class="main-nav" id="mainNav">
+                <button data-page="home" class="nav-btn">Inicio</button>
+                <button data-page="asignaturas" class="nav-btn active">Asignaturas</button>
+                <button data-page="core" class="nav-btn">Core IB</button>
+                <button data-page="atl" class="nav-btn">ATL</button>
+                <button data-page="ia" class="nav-btn">IA</button>
+                <button data-page="bases" class="nav-btn">Base de Datos</button>
+                <button data-page="docente" class="nav-btn">Zona Docente</button>
+                <button data-page="soporte" class="nav-btn">Soporte</button>
+                <button data-page="bienestar" class="nav-btn">Bienestar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="container">
+    <!-- PÁGINA DE INICIO (HOME) resumida pero funcional -->
+    <div id="homePage" class="page">
+        <div class="hero" style="background: linear-gradient(115deg, #0a2946, #1e4a76); border-radius: 28px; padding: 2rem; margin: 20px 0; color:white; text-align:center;">
+            <h1>Bienvenidos a tu <span style="color:#f5d742;">Saco Oliveros Monterrico Virtual Library</span></h1>
+            <p>Tu ecosistema digital para investigar, aprender y alcanzar tu máximo potencial internacional. (Rumbo a la Excelencia)</p>
+        </div>
+        <div class="search-section" style="margin:20px 0; text-align:center;">
+            <div class="search-wrapper" style="background:white; border-radius:80px; padding:8px 20px; max-width:550px; margin:0 auto; display:flex; gap:12px;">
+                <i class="fas fa-search"></i>
+                <input type="text" id="globalSearchHome" placeholder="¿Qué necesitas investigar hoy?" style="border:none; width:100%; outline:none;">
+            </div>
+        </div>
+        <div class="action-buttons" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; margin:30px 0;">
+            <button class="btn-outline" data-nav="asignaturas" style="background:#1e4a76; color:white;">📖 Monografía (EE)</button>
+            <button class="btn-outline" data-nav="asignaturas">🧠 TOK</button>
+            <button class="btn-outline" data-nav="asignaturas">🤝 CAS</button>
+            <button class="btn-outline" data-nav="asignaturas">📚 Recursos por Asignatura</button>
+        </div>
+    </div>
+
+    <!-- ========== PÁGINA ASIGNATURAS CON BANNER, COMBO Y NOTA ========== -->
+    <div id="asignaturasPage" class="page active-page">
+        <!-- Banner superior -->
+        <div class="subjects-banner">
+            <div class="banner-content">
+                <h1>RECURSOS POR ASIGNATURA</h1>
+                <p>Material organizado por los Grupos del IB y niveles (NS / NM). Encuentra guías, ejercicios, simulaciones y mucho más.</p>
+            </div>
+        </div>
+
+        <!-- Texto después del banner (opcional pero añade contexto) -->
+        <div style="margin: 16px 0 8px;">
+            <p style="font-size:1rem; color:#2c5a7a;"><i class="fas fa-info-circle"></i> Explora todos los recursos académicos digitales diseñados para potenciar tu aprendizaje en el Programa del Diploma.</p>
+        </div>
+
+        <!-- Combobox y nota con signo de exclamación -->
+        <div class="subjects-control">
+            <div class="filter-group">
+                <label><i class="fas fa-layer-group"></i> Selecciona Grupo IB:</label>
+                <select id="groupSelector" class="custom-select">
+                    <option value="1">Grupo 1 - Lengua y Literatura</option>
+                    <option value="2">Grupo 2 - Adquisición de Lenguas</option>
+                    <option value="3">Grupo 3 - Individuos y Sociedades</option>
+                    <option value="4">Grupo 4 - Ciencias</option>
+                    <option value="5">Grupo 5 - Matemáticas</option>
+                    <option value="6">Grupo 6 - Artes</option>
+                </select>
+            </div>
+            <!-- Nota con signo de exclamación -->
+            <div class="note-exclamation">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p><strong>Nota importante:</strong> Los recursos están actualizados conforme a la guía IB 2025. Los niveles NS (Nivel Superior) y NM (Nivel Medio) se especifican dentro de cada material. Para acceder a bases de datos externas, usa tu usuario institucional.</p>
+            </div>
+        </div>
+
+        <!-- Aquí se mostrarán dinámicamente los recursos según grupo seleccionado -->
+        <div id="resourcesDynamicContainer" class="resources-grid">
+            <!-- Cargado por JS -->
+        </div>
+    </div>
+
+    <!-- OTRAS PÁGINAS (core, atl, ia, etc.) resumidas -->
+    <div id="corePage" class="page"><div class="info-card" style="margin-top:20px;"><h2>Core IB: EE, TOK, CAS</h2><p>Guías completas para el núcleo del Diploma.</p></div></div>
+    <div id="atlPage" class="page"><div class="info-card"><h2>ATL - Habilidades de Aprendizaje</h2><p>Pensamiento crítico, comunicación y autogestión.</p></div></div>
+    <div id="iaPage" class="page"><div class="info-card"><h2>Internal Assessment</h2><p>Recursos para tus evaluaciones internas.</p></div></div>
+    <div id="basesPage" class="page"><div class="info-card"><h2>Bases de Datos</h2><p>JSTOR, EBSCO, Google Scholar.</p></div></div>
+    <div id="docentePage" class="page"><div class="info-card"><h2>Zona Docente</h2><p>Material exclusivo para profesores.</p></div></div>
+    <div id="soportePage" class="page"><div class="info-card"><h2>Soporte</h2><p>Contacto: library@sacooliveros.edu.pe</p></div></div>
+    <div id="bienestarPage" class="page"><div class="info-card"><h2>Bienestar Estudiantil</h2><p>Apoyo emocional y gestión del estrés.</p></div></div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="values">
+            Indagadores · Íntegros · Solidarios · Audaces · Aquilinaides · Reflexivos
+        </div>
+        <div class="footer-links">
+            <a href="#">Integridad Académica</a>
+            <a href="#">Política de Privacidad</a>
+            <a href="#">Contacto</a>
+        </div>
+        <p style="text-align:center; font-size:0.75rem;">© 2025 Saco Oliveros - Monterrico Virtual Library. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script>
+    // ======================= SPA Navegación =======================
+    const pages = {
+        home: document.getElementById('homePage'),
+        asignaturas: document.getElementById('asignaturasPage'),
+        core: document.getElementById('corePage'),
+        atl: document.getElementById('atlPage'),
+        ia: document.getElementById('iaPage'),
+        bases: document.getElementById('basesPage'),
+        docente: document.getElementById('docentePage'),
+        soporte: document.getElementById('soportePage'),
+        bienestar: document.getElementById('bienestarPage')
+    };
+    const navBtns = document.querySelectorAll('.nav-btn');
+    function showPage(pageId) {
+        Object.keys(pages).forEach(key => pages[key].classList.remove('active-page'));
+        pages[pageId].classList.add('active-page');
+        navBtns.forEach(btn => {
+            if(btn.dataset.page === pageId) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+        if(pageId === 'asignaturas') {
+            loadResourcesByGroup(document.getElementById('groupSelector').value);
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    navBtns.forEach(btn => btn.addEventListener('click', () => showPage(btn.dataset.page)));
+    document.querySelectorAll('[data-nav]').forEach(el => {
+        el.addEventListener('click', (e) => {
+            const target = el.getAttribute('data-nav');
+            if(target && pages[target]) showPage(target);
+        });
+    });
+
+    // ========== RECURSOS POR GRUPO (Base de datos simulada) ==========
+    const resourcesDB = {
+        1: {
+            name: "Grupo 1 - Lengua y Literatura",
+            subjects: [
+                { name: "Lengua A: Literatura NS/NM", level: "NS/NM", resources: ["Guía de análisis literario", "Ejemplos de ensayos (Paper 1)", "Glosario de términos", "Banco de textos globales"] },
+                { name: "Lengua y Literatura NS", level: "NS", resources: ["Comparativa de géneros", "Teoría crítica contemporánea"] }
+            ]
+        },
+        2: {
+            name: "Grupo 2 - Adquisición de Lenguas",
+            subjects: [
+                { name: "Inglés B NS/NM", level: "NS/NM", resources: ["Simulacros de expresión oral", "Vocabulario temático", "Ejercicios de comprensión lectora"] },
+                { name: "Francés B NM", level: "NM", resources: ["Guías de gramática", "Podcasts para práctica auditiva"] },
+                { name: "Español ab initio", level: "NM", resources: ["Cuaderno de actividades", "Flashcards interactivas"] }
+            ]
+        },
+        3: {
+            name: "Grupo 3 - Individuos y Sociedades",
+            subjects: [
+                { name: "Historia NS/NM", level: "NS/NM", resources: ["Análisis de fuentes primarias", "Líneas de tiempo interactivas", "Guía de evaluación Paper 2"] },
+                { name: "Economía NS", level: "NS", resources: ["Estudios de caso globales", "Ejercicios de política económica"] },
+                { name: "Psicología NM", level: "NM", resources: ["Resúmenes de teorías", "Experimentos clave"] }
+            ]
+        },
+        4: {
+            name: "Grupo 4 - Ciencias",
+            subjects: [
+                { name: "Biología NS/NM", level: "NS/NM", resources: ["Simulaciones de laboratorio virtual", "Guías de disecciones", "Preguntas tipo examen"] },
+                { name: "Química NS", level: "NS", resources: ["Tabla periódica interactiva", "Problemas estequiométricos"] },
+                { name: "Física NM", level: "NM", resources: ["Simulaciones PhET", "Fórmulas y ejercicios resueltos"] }
+            ]
+        },
+        5: {
+            name: "Grupo 5 - Matemáticas",
+            subjects: [
+                { name: "Análisis y Enfoques (AA) NS/NM", level: "NS/NM", resources: ["Ejercicios de cálculo", "Past papers resueltos", "Teoremas clave"] },
+                { name: "Aplicaciones e Interpretación (AI) NS", level: "NS", resources: ["Modelos estadísticos", "Proyectos de modelización"] }
+            ]
+        },
+        6: {
+            name: "Grupo 6 - Artes",
+            subjects: [
+                { name: "Artes Visuales NS/NM", level: "NS/NM", resources: ["Guía del portfolio comparativo", "Análisis de obras", "Proceso creativo"] },
+                { name: "Música NS", level: "NS", resources: ["Teoría musical interactiva", "Audiciones comentadas"] },
+                { name: "Teatro NM", level: "NM", resources: ["Guía de producción teatral", "Estudio de dramaturgos"] }
+            ]
+        }
+    };
+
+    function loadResourcesByGroup(groupId) {
+        const container = document.getElementById('resourcesDynamicContainer');
+        if(!container) return;
+        const groupData = resourcesDB[groupId];
+        if(!groupData) {
+            container.innerHTML = '<p>No hay recursos disponibles para este grupo.</p>';
+            return;
+        }
+        let html = '';
+        groupData.subjects.forEach(subj => {
+            html += `
+                <div class="subject-card">
+                    <h3><i class="fas fa-book"></i> ${subj.name}</h3>
+                    <span class="level-badge">Nivel: ${subj.level}</span>
+                    <ul class="resource-list">
+                        ${subj.resources.map(res => `<li><i class="fas fa-check-circle"></i> ${res}</li>`).join('')}
+                    </ul>
+                    <div style="margin-top: 16px;">
+                        <button class="btn-outline" style="font-size:0.75rem;">Ver todos los materiales <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            `;
+        });
+        container.innerHTML = html;
+    }
+
+    // Cargar recursos iniciales (Grupo 1 por defecto)
+    document.getElementById('groupSelector')?.addEventListener('change', (e) => {
+        loadResourcesByGroup(e.target.value);
+    });
+    // Inicializar página de asignaturas si es la activa
+    if(document.getElementById('asignaturasPage').classList.contains('active-page')) {
+        loadResourcesByGroup(document.getElementById('groupSelector').value);
+    } else {
+        // precargar por si luego se navega
+        window.loadResources = () => loadResourcesByGroup(document.getElementById('groupSelector').value);
+    }
+
+    // Buscador de home
+    document.getElementById('globalSearchHome')?.addEventListener('input', (e) => {
+        if(e.target.value.length > 2) alert(`🔍 Búsqueda simulada: "${e.target.value}". Revisa los recursos en la sección Asignaturas.`);
+    });
+
+    // Asegurar que al hacer clic en Asignaturas se carguen los recursos
+    const originalShow = showPage;
+    window.showPage = function(pageId) {
+        originalShow(pageId);
+        if(pageId === 'asignaturas') loadResourcesByGroup(document.getElementById('groupSelector').value);
+    };
+    showPage = window.showPage;
+    // reemplazar la función global
+    window.showPage = showPage;
+    // ejecutar bind
+    if(document.getElementById('asignaturasPage').classList.contains('active-page')) loadResourcesByGroup('1');
+</script>
+</body>
+</html>
+```

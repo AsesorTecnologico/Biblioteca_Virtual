@@ -1,0 +1,1920 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Saco Oliveros Monterrico | IB Virtual Library</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ========== RESET Y BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f9ff;
+            color: #0a1c2f;
+            line-height: 1.5;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #dee8f2;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e4a76;
+            border-radius: 10px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            background: white;
+            border-bottom: 2px solid #d4af37;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+        .top-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 0;
+}
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .logo-img {
+            background: #0a2946;
+            border-radius: 50px;
+            padding: 8px 14px;
+            color: #d4af37;
+            font-weight: 800;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo-text h2 {
+            font-size: 1.2rem;
+    font-weight: 800;
+    color: #1e4a76;
+    margin: 0;
+        }
+        .logo-text p {
+            font-size: 0.7rem;
+    color: #b8860b;
+    font-weight: 600;
+    margin: 0;
+        }
+        .main-nav {
+            display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    background: #f8fafd;
+    padding: 8px 20px;
+    border-radius: 60px;
+    margin-left: auto;  /* Empuja el menú hacia la derecha */
+        }
+
+/* En pantallas grandes, separa un poco más del borde derecho */
+@media (min-width: 992px) {
+    .main-nav {
+        margin-right: 20px;
+    }
+}
+
+/* Ajuste responsive: en móviles, el menú se centra */
+@media (max-width: 768px) {
+    .main-nav {
+        margin-left: 0;
+        justify-content: center;
+    }
+}
+
+        .main-nav button {
+            background: none;
+            border: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            color: #1f3a5f;
+            transition: all 0.2s;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .main-nav button.active, .main-nav button:hover {
+            color: #d4af37;
+            border-bottom-color: #d4af37;
+        }
+
+        /* ========== BOTONES Y UTILIDADES ========== */
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #1e4a76;
+            border-radius: 60px;
+            padding: 6px 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-outline:hover {
+            background: #1e4a76;
+            color: white;
+        }
+        .btn-primary {
+            background: #1e4a76;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 60px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-primary:hover {
+            background: #0f3554;
+            transform: scale(1.02);
+        }
+
+        /* ========== SPA PAGES ========== */
+        .page {
+            display: none;
+            animation: fade 0.3s ease;
+        }
+        .active-page {
+            display: block;
+        }
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(8px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        /* ========== HOME ========== */
+        .hero {
+            background: linear-gradient(115deg, #0a2946, #1e4a76);
+            border-radius: 28px;
+            padding: 2rem;
+            margin: 20px 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.pexels.com/photos/256514/pexels-photo-256514.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            opacity: 0.2;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .search-wrapper {
+            background: white;
+            border-radius: 80px;
+            padding: 8px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 550px;
+            margin: 0 auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .search-wrapper input {
+            border: none;
+            outline: none;
+            width: 100%;
+            background: transparent;
+        }
+        .big-icons, .action-buttons {
+            display: grid;
+            gap: 24px;
+            margin: 30px 0;
+        }
+        .big-icons {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+        .big-card {
+            background: white;
+            border-radius: 28px;
+            padding: 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.25s;
+            border: 1px solid #e2edf7;
+        }
+        .big-card:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+        }
+        .action-buttons {
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        }
+        .action-btn {
+            background: #1e4a76;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 60px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .grid-panels {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin: 30px 0;
+        }
+        .panel {
+            background: white;
+            border-radius: 28px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            margin-top: 16px;
+        }
+        .cal-day {
+            padding: 10px 4px;
+            text-align: center;
+            background: #f9fbfd;
+            border-radius: 40px;
+        }
+        .cal-weekday {
+            font-weight: 800;
+            color: #1e4a76;
+        }
+        .event-day {
+            background: #ffe6b3;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        /* ========== ASIGNATURAS ========== */
+        .subjects-banner {
+            background: linear-gradient(115deg, #0a2946, #1e4a76);
+            border-radius: 32px;
+            margin: 28px 0 24px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .subjects-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            opacity: 0.2;
+        }
+        .subjects-control {
+            background: white;
+            border-radius: 28px;
+            padding: 28px;
+            margin: 20px 0 32px;
+        }
+        .custom-select {
+            background: #f4f8fe;
+            border-radius: 60px;
+            padding: 12px 24px;
+            border: 1px solid #cbdde9;
+            font-size: 1rem;
+            min-width: 220px;
+        }
+        .note-exclamation {
+            background: #fff8e7;
+            border-left: 6px solid #d4af37;
+            padding: 16px 20px;
+            border-radius: 20px;
+            display: flex;
+            gap: 14px;
+            margin-top: 20px;
+        }
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 28px;
+            margin: 32px 0;
+        }
+        .subject-card {
+            background: white;
+            border-radius: 28px;
+            padding: 24px;
+            border: 1px solid #e2edf7;
+        }
+
+        /* ========== CORE IB ========== */
+        .core-banner {
+            background: linear-gradient(115deg, #0a2946, #1e4a76);
+            border-radius: 32px;
+            margin: 28px 0 24px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .core-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.pexels.com/photos/159775/library-la-trobe-study-students-159775.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            opacity: 0.2;
+        }
+        .core-three-cards, .two-columns {
+            display: grid;
+            gap: 28px;
+            margin: 32px 0;
+        }
+        .core-three-cards {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
+        .two-columns {
+            grid-template-columns: 2fr 1fr;
+        }
+        .core-card, .info-box {
+            background: white;
+            border-radius: 28px;
+            padding: 24px;
+            border: 1px solid #e2edf7;
+            transition: 0.2s;
+        }
+        .core-card:hover {
+            transform: translateY(-4px);
+            border-color: #d4af37;
+        }
+        .process-steps li {
+            margin-bottom: 12px;
+            display: flex;
+            gap: 12px;
+            align-items: baseline;
+        }
+        .quick-links a {
+            display: block;
+            margin: 12px 0;
+            color: #1e4a76;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* ========== ATL ========== */
+        .atl-banner {
+            background: linear-gradient(115deg, #0a2946, #1e4a76);
+            border-radius: 32px;
+            margin: 28px 0 32px;
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+        .atl-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200');
+            background-size: cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        .banner-text, .banner-image {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+        .banner-text h1 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+        .banner-text p {
+            font-size: 1rem;
+            max-width: 500px;
+            opacity: 0.9;
+        }
+        .banner-image {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(4px);
+            border-radius: 28px;
+            padding: 20px;
+        }
+        .banner-image i {
+            font-size: 3rem;
+            color: #d4af37;
+        }
+        .banner-image .comment {
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 28px;
+            margin: 40px 0;
+        }
+        .skill-card {
+            background: white;
+            border-radius: 28px;
+            padding: 28px 20px;
+            border: 1px solid #e2edf7;
+            transition: 0.25s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+        }
+        .skill-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: #1e4a76;
+        }
+        .skill-card p {
+            color: #4a627a;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        .atl-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            margin: 40px 0 20px;
+        }
+        .feature-block {
+            background: white;
+            border-radius: 28px;
+            padding: 24px;
+            border-left: 6px solid #d4af37;
+        }
+        .feature-block h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .feature-block ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        /* ========== IA ========== */
+        .ia-banner {
+            background: linear-gradient(115deg, #0a2946, #1e4a76);
+            border-radius: 28px;
+            margin: 28px 0 32px;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .ia-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            background-position: center 30%;
+            opacity: 0.45;
+            z-index: 0;
+        }
+        .ia-banner .banner-content {
+            position: relative;
+            z-index: 2;
+        }
+        .ia-banner h1 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+        .ia-usage {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin: 40px 0;
+        }
+        .usage-block {
+            background: white;
+            border-radius: 32px;
+            padding: 28px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+        }
+        .usage-block h2 {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            border-left: 5px solid #d4af37;
+            padding-left: 16px;
+        }
+        .circle-buttons {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            text-align: center;
+        }
+        .circle-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .circle-btn {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #f0f4f9;
+            border: 2px solid #1e4a76;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 2rem;
+            color: #1e4a76;
+        }
+        .circle-btn:hover {
+            background: #1e4a76;
+            color: white;
+            transform: scale(1.05);
+        }
+        .circle-item span {
+            font-size: 0.75rem;
+            font-weight: 500;
+            max-width: 80px;
+        }
+        .ia-resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 28px;
+            margin: 40px 0 20px;
+        }
+        .resource-col {
+            background: white;
+            border-radius: 28px;
+            padding: 24px;
+            border-top: 5px solid #d4af37;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .resource-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            color: #1e4a76;
+        }
+
+        /* ========== NUEVAS PÁGINAS (Base de Datos, Zona Docente, Soporte, Bienestar) ========== */
+        .generic-page {
+            margin-top: 28px;
+        }
+        .page-banner {
+            background: linear-gradient(115deg, #0a2946, #1e4a76);
+            border-radius: 32px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        .bases-banner::before { background-image: url('https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&w=1200'); }
+        .docente-banner::before { background-image: url('https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=1200'); }
+        .soporte-banner::before { background-image: url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1200'); }
+        .bienestar-banner::before { background-image: url('https://images.pexels.com/photos/2733701/pexels-photo-2733701.jpeg?auto=compress&cs=tinysrgb&w=1200'); }
+        .card-grid-three {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            margin: 32px 0;
+        }
+        .info-card {
+            background: white;
+            border-radius: 28px;
+            padding: 24px;
+            border: 1px solid #e2edf7;
+            transition: 0.2s;
+        }
+        .info-card:hover {
+            transform: translateY(-4px);
+            border-color: #d4af37;
+        }
+        .contact-card {
+            background: #fef7e0;
+            border-left: 6px solid #d4af37;
+        }
+
+        footer {
+            background: #0a1c2f;
+            color: #cfdfed;
+            padding: 32px 0;
+            margin-top: 48px;
+            border-radius: 24px 24px 0 0;
+        }
+        @media (max-width: 780px) {
+            .grid-panels, .two-columns, .ia-usage { grid-template-columns: 1fr; }
+            .top-bar { flex-direction: column; }
+            .atl-banner { flex-direction: column; text-align: center; }
+            .circle-btn { width: 55px; height: 55px; font-size: 1.5rem; }
+        }
+
+        /* ========== BASE DE DATOS - ESTILOS ESPECÍFICOS ========== */
+.section-title-db {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin: 40px 0 20px 0;
+    color: #1e4a76;
+    border-left: 5px solid #d4af37;
+    padding-left: 18px;
+}
+
+.bases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.db-card {
+    background: white;
+    border-radius: 28px;
+    padding: 24px;
+    border: 1px solid #e2edf7;
+    transition: 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.db-card:hover {
+    transform: translateY(-4px);
+    border-color: #d4af37;
+    box-shadow: 0 12px 20px -10px rgba(0,0,0,0.1);
+}
+.db-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    color: #1e4a76;
+}
+.db-card p {
+    color: #4a627a;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    flex-grow: 1;
+}
+.db-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+}
+.btn-outline-small {
+    background: transparent;
+    border: 1.5px solid #1e4a76;
+    border-radius: 60px;
+    padding: 6px 14px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.2s;
+    text-decoration: none;
+    color: #1e4a76;
+    display: inline-block;
+}
+.btn-outline-small:hover {
+    background: #1e4a76;
+    color: white;
+}
+.access-badge {
+    background: #eef3fc;
+    padding: 4px 12px;
+    border-radius: 40px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #1e4a76;
+}
+.access-badge.open-access {
+    background: #e6f4ea;
+    color: #2e7d32;
+}
+.repos-list {
+    background: white;
+    border-radius: 28px;
+    padding: 24px;
+    margin-bottom: 32px;
+}
+.repos-list ul {
+    margin-left: 20px;
+    line-height: 1.8;
+}
+.steps-box {
+    background: white;
+    border-radius: 28px;
+    padding: 28px;
+    margin-bottom: 40px;
+}
+.steps-box ol {
+    margin-left: 24px;
+    line-height: 1.8;
+}
+.guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+    margin-bottom: 40px;
+}
+.guide-card {
+    background: white;
+    border-radius: 28px;
+    padding: 18px;
+    border: 1px solid #e2edf7;
+    font-weight: 500;
+    transition: 0.2s;
+    cursor: pointer;
+}
+.guide-card:hover {
+    background: #fef7e0;
+    border-color: #d4af37;
+}
+.guide-card.full-width {
+    grid-column: 1 / -1;
+    text-align: center;
+    background: #f0f4f9;
+}
+.generic-intro p {
+    font-size: 1rem;
+    color: #2c3e50;
+    background: white;
+    padding: 20px;
+    border-radius: 28px;
+    margin: 0;
+}
+
+/* ========== ZONA DOCENTE - ESTILOS ========== */
+.highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+.highlight-card {
+    background: white;
+    border-radius: 28px;
+    padding: 20px;
+    border: 1px solid #e2edf7;
+    transition: 0.2s;
+}
+.highlight-card:hover {
+    transform: translateY(-3px);
+    border-color: #d4af37;
+}
+.shared-folder {
+    background: white;
+    border-radius: 32px;
+    padding: 28px;
+    margin: 40px 0;
+}
+.folder-list {
+    margin: 20px 0;
+}
+.folder-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #ecf3f9;
+    font-size: 1rem;
+}
+.folder-item i {
+    color: #d4af37;
+    width: 30px;
+}
+.folder-count {
+    background: #eef3fc;
+    padding: 4px 12px;
+    border-radius: 40px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.two-columns-docente {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin: 40px 0;
+}
+.tools-box, .events-box {
+    background: white;
+    border-radius: 32px;
+    padding: 28px;
+}
+.tools-list {
+    list-style: none;
+    margin: 20px 0;
+}
+.tools-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ecf3f9;
+}
+.event-card {
+    background: #f9fbfd;
+    border-radius: 24px;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-left: 4px solid #d4af37;
+}
+.community-box {
+    background: white;
+    border-radius: 32px;
+    padding: 28px;
+    margin: 20px 0 40px;
+    text-align: center;
+}
+.community-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+@media (max-width: 780px) {
+    .two-columns-docente {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== SOPORTE - ESTILOS ========== */
+.help-section {
+    margin: 40px 0;
+}
+.help-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+}
+.help-card {
+    background: white;
+    border-radius: 32px;
+    padding: 24px;
+    text-align: center;
+    border: 1px solid #e2edf7;
+    transition: 0.2s;
+}
+.help-card:hover {
+    transform: translateY(-4px);
+    border-color: #d4af37;
+}
+.help-card i {
+    font-size: 2rem;
+    color: #d4af37;
+    margin-bottom: 12px;
+}
+.help-card h3 {
+    font-size: 1.2rem;
+    margin: 12px 0;
+}
+.help-card .time, .help-card .phone {
+    font-size: 0.8rem;
+    color: #4a627a;
+    margin: 8px 0;
+}
+.faq-guides-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin: 40px 0;
+}
+.faq-box, .guides-box {
+    background: white;
+    border-radius: 32px;
+    padding: 28px;
+}
+.faq-list {
+    list-style: none;
+    margin: 20px 0;
+}
+.faq-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ecf3f9;
+    cursor: pointer;
+}
+.faq-list li:hover {
+    color: #d4af37;
+}
+.guide-item {
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #ecf3f9;
+}
+.guide-item i {
+    width: 30px;
+    color: #d4af37;
+}
+.badge {
+    background: #eef3fc;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+.hours-suggestion {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin: 40px 0;
+}
+.hours-box {
+    background: white;
+    border-radius: 32px;
+    padding: 28px;
+}
+.hours-list {
+    list-style: none;
+    margin-top: 20px;
+}
+.hours-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ecf3f9;
+}
+.suggestion-box {
+    background: #fef7e0;
+    border-radius: 32px;
+    padding: 28px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.suggestion-box i {
+    font-size: 2.5rem;
+    color: #d4af37;
+}
+.suggestion-box h3 {
+    margin-bottom: 8px;
+}
+.suggestion-box button {
+    margin-top: 12px;
+}
+@media (max-width: 780px) {
+    .faq-guides-row, .hours-suggestion {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========== BIENESTAR - ESTILOS ========== */
+.wellness-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 28px;
+    margin: 40px 0;
+}
+.wellness-card {
+    background: white;
+    border-radius: 32px;
+    padding: 28px 20px;
+    text-align: center;
+    border: 1px solid #e2edf7;
+    transition: 0.2s;
+}
+.wellness-card:hover {
+    transform: translateY(-5px);
+    border-color: #d4af37;
+}
+.wellness-card i {
+    font-size: 2.5rem;
+    color: #d4af37;
+    margin-bottom: 16px;
+}
+.wellness-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    color: #1e4a76;
+}
+.wellness-card p {
+    color: #4a627a;
+    margin-bottom: 20px;
+}
+.wellness-resources {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin: 40px 0;
+}
+.resource-box {
+    background: white;
+    border-radius: 32px;
+    padding: 28px;
+}
+.resource-list {
+    list-style: none;
+    margin: 20px 0;
+}
+.resource-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #ecf3f9;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.resource-list li i {
+    width: 28px;
+    color: #d4af37;
+}
+.event-card {
+    background: #f9fbfd;
+    border-radius: 24px;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-left: 4px solid #d4af37;
+}
+.wellness-emergency {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin: 40px 0 20px;
+}
+.emergency-box {
+    background: #fef7e0;
+    border-radius: 32px;
+    padding: 24px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.emergency-box i {
+    font-size: 2rem;
+    color: #d4af37;
+}
+.emergency-box .small {
+    font-size: 0.75rem;
+    margin-top: 6px;
+    color: #5a4a1a;
+}
+@media (max-width: 780px) {
+    .wellness-resources, .wellness-emergency {
+        grid-template-columns: 1fr;
+    }
+}
+
+.logo-area{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+/* Imagen superior izquierda */
+.top-logo{
+    position: absolute;
+    top: -10px;
+    left: -10px;
+}
+
+.top-logo img{
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+}
+
+.logo-img{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo-text h2{
+        margin: 0;
+    font-size: 24px;
+    margin-left: 80px; /* mueve a la derecha */
+}
+
+.logo-text p{
+    margin: 0;
+    font-size: 14px;
+}
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="container">
+        <div class="top-bar">
+            <div class="logo-area">
+                <!-- Imagen superior izquierda -->
+                <div class="top-logo">
+                    <img src="imagenes/banner.png" alt="Logo Saco Oliveros">
+                </div>
+                <div class="logo-text">
+                    <h2>Monterrico</h2>
+                    <p><p>Liderazgo Global · Transformando el Talento Peruano</p></p>
+                </div>
+            </div>
+            <div class="main-nav">
+                <button data-page="home" class="nav-btn active">Inicio</button>
+                <button data-page="asignaturas" class="nav-btn">Asignaturas</button>
+                <button data-page="core" class="nav-btn">Core IB</button>
+                <button data-page="atl" class="nav-btn">ATL</button>
+                <button data-page="ia" class="nav-btn">IA</button>
+                <button data-page="bases" class="nav-btn">Base de Datos</button>
+                <button data-page="docente" class="nav-btn">Zona Docente</button>
+                <button data-page="soporte" class="nav-btn">Soporte</button>
+                <button data-page="bienestar" class="nav-btn">Bienestar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="container">
+    <!-- HOME -->
+    <div id="homePage" class="page active-page">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Bienvenidos a tu <span style="color:#f5d742;">Saco Oliveros Monterrico Virtual Library</span></h1>
+                <p>Tu ecosistema digital para investigar, aprender y alcanzar tu máximo potencial internacional. <strong>(Rumbo a la Excelencia)</strong></p>
+            </div>
+        </div>
+        <div style="margin: 20px 0;">
+            <div class="search-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="homeSearch" placeholder="¿Qué necesitas investigar hoy? (EE, TOK, CAS, Asignaturas...)">
+            </div>
+        </div>
+        <div class="big-icons">
+            <div class="big-card" data-nav="asignaturas"><i class="fas fa-pen-fancy"></i><h3>EE Monografía</h3><p>Extended Essay</p></div>
+            <div class="big-card" data-nav="asignaturas"><i class="fas fa-brain"></i><h3>TOK</h3><p>Teoría del Conocimiento</p></div>
+            <div class="big-card" data-nav="asignaturas"><i class="fas fa-hands-helping"></i><h3>CAS</h3><p>Creatividad, Actividad, Servicio</p></div>
+            <div class="big-card" data-nav="asignaturas"><i class="fas fa-book-open"></i><h3>ASIGNATURAS</h3><p>Recursos por Grupo</p></div>
+        </div>
+        <div class="action-buttons">
+            <button class="action-btn" data-nav="asignaturas"><i class="fas fa-file-alt"></i> Monografía (EE)</button>
+            <button class="action-btn" data-nav="asignaturas"><i class="fas fa-comment-dots"></i> TOK</button>
+            <button class="action-btn" data-nav="asignaturas"><i class="fas fa-feather-alt"></i> CAS</button>
+            <button class="action-btn" data-nav="asignaturas"><i class="fas fa-layer-group"></i> Recursos por Asignatura</button>
+        </div>
+        <div class="grid-panels">
+            <div class="panel">
+                <h3><i class="fas fa-star"></i> Recurso del mes</h3>
+                <div style="background:#fef7e0; border-radius:24px; padding:18px;">
+                    <strong style="font-size:1.2rem;">The Extended Essay: A Guide for Students</strong>
+                    <p style="margin:10px 0;">Guía esencial para planificar, investigar y escribir una Monografía de alta calidad.</p>
+                    <button class="btn-outline" id="verRecursoBtn">Ver recurso →</button>
+                </div>
+            </div>
+            <div class="panel">
+                <h3><i class="far fa-calendar-alt"></i> Fechas importantes</h3>
+                <ul style="list-style:none;">
+                    <li style="padding:8px 0;"><strong>15 MAY 2025</strong> - Entrega borrador EE <button class="google-link" data-title="Entrega borrador EE" data-date="20250515T080000" style="background:none; border:none; color:#1e4a76; cursor:pointer;">📅 Google</button></li>
+                    <li style="padding:8px 0;"><strong>28 MAY 2025</strong> - Presentaciones TOK <button class="google-link" data-title="Presentaciones TOK" data-date="20250528T100000" style="background:none; border:none; color:#1e4a76; cursor:pointer;">📅 Google</button></li>
+                    <li style="padding:8px 0;"><strong>10 JUN 2025</strong> - Exámenes internos <button class="google-link" data-title="Exámenes internos" data-date="20250610T080000" style="background:none; border:none; color:#1e4a76; cursor:pointer;">📅 Google</button></li>
+                    <li style="padding:8px 0;"><strong>22 JUN 2025</strong> - Entrega final Monografía <button class="google-link" data-title="Entrega final Monografía" data-date="20250622T235900" style="background:none; border:none; color:#1e4a76; cursor:pointer;">📅 Google</button></li>
+                </ul>
+                <button id="fullCalendarBtn" class="btn-outline" style="margin-top:8px;">Ver calendario completo</button>
+            </div>
+        </div>
+        <div class="panel" style="margin-top:0;">
+            <h3>📅 Mayo 2025 · Calendario interactivo</h3>
+            <div id="miniCalendar" class="calendar-grid"></div>
+        </div>
+    </div>
+
+    <!-- ASIGNATURAS -->
+    <div id="asignaturasPage" class="page">
+        <div class="subjects-banner">
+            <div class="banner-content">
+                <h1>RECURSOS POR ASIGNATURA</h1>
+                <p>Material organizado por los Grupos del IB y niveles (NS / NM). Encuentra guías, ejercicios y mucho más.</p>
+            </div>
+        </div>
+        <div style="margin-bottom: 16px;"><i class="fas fa-info-circle"></i> Explora todos los recursos académicos digitales diseñados para potenciar tu aprendizaje.</div>
+        <div class="subjects-control">
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin-bottom: 20px;">
+                <label><i class="fas fa-layer-group"></i> Selecciona Grupo IB:</label>
+                <select id="groupSelector" class="custom-select">
+                    <option value="1">Grupo 1 - Lengua y Literatura</option>
+                    <option value="2">Grupo 2 - Adquisición de Lenguas</option>
+                    <option value="3">Grupo 3 - Individuos y Sociedades</option>
+                    <option value="4">Grupo 4 - Ciencias</option>
+                    <option value="5">Grupo 5 - Matemáticas</option>
+                    <option value="6">Grupo 6 - Artes</option>
+                </select>
+            </div>
+            <div class="note-exclamation">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p><strong>Nota importante:</strong> Los recursos están actualizados conforme a la guía IB 2025. Los niveles NS (Nivel Superior) y NM (Nivel Medio) se especifican dentro de cada material. Para acceder a bases de datos externas, usa tu usuario institucional.</p>
+            </div>
+        </div>
+        <div id="resourcesDynamicContainer" class="resources-grid"></div>
+    </div>
+
+    <!-- CORE IB -->
+    <div id="corePage" class="page">
+        <div class="core-banner">
+            <div class="banner-content">
+                <h1>CORE IB</h1>
+                <p>El núcleo del Programa del Diploma: Monografía (EE), Teoría del Conocimiento (TOK) y Creatividad, Actividad y Servicio (CAS). Desarrollo integral y pensamiento crítico para tu éxito académico y personal.</p>
+            </div>
+        </div>
+        <div class="core-three-cards">
+            <div class="core-card"><i class="fas fa-pen-fancy" style="font-size:2rem; color:#d4af37;"></i><h3>📘 Monografía (EE)</h3><p>Investigación independiente de 4000 palabras. Guías, ejemplos, criterios de evaluación.</p><button class="btn-outline" style="margin-top:12px;">Explorar recursos →</button></div>
+            <div class="core-card"><i class="fas fa-brain" style="font-size:2rem; color:#d4af37;"></i><h3>🧠 Teoría del Conocimiento (TOK)</h3><p>Cuestiona la naturaleza del saber. Conceptos clave, preguntas de conocimiento.</p><button class="btn-outline" style="margin-top:12px;">Ver materiales TOK →</button></div>
+            <div class="core-card"><i class="fas fa-hands-helping" style="font-size:2rem; color:#d4af37;"></i><h3>🤝 CAS</h3><p>Registra tus experiencias, reflexiones y proyectos. Desarrolla habilidades más allá del aula.</p><button class="btn-outline" style="margin-top:12px;">Ir a portfolio CAS →</button></div>
+        </div>
+        <div class="two-columns">
+            <div>
+                <div class="info-box"><h3><i class="fas fa-file-alt"></i> Monografía (EE) - Recursos completos</h3><ul><li><strong>Guías oficiales:</strong> Manual del estudiante y del supervisor (actualizado 2025).</li><li><strong>Ejemplos anotados:</strong> Monografías con puntuación A.</li><li><strong>Criterios de evaluación:</strong> Rúbrica detallada.</li><li><strong>Herramientas:</strong> Planificadores, checklist.</li></ul><button class="btn-primary" style="margin-top:20px;">Acceder a todos los recursos EE →</button></div>
+                <div class="info-box"><h3><i class="fas fa-chart-line"></i> Proceso de la Monografía</h3><ol class="process-steps"><li><i class="fas fa-lightbulb"></i> Elección del tema</li><li><i class="fas fa-search"></i> Investigación profunda</li><li><i class="fas fa-tasks"></i> Planificación y esquema</li><li><i class="fas fa-pen-fancy"></i> Redacción y reflexión</li><li><i class="fas fa-check-double"></i> Revisión final y entrega</li></ol></div>
+            </div>
+            <div>
+                <div class="info-box"><h3><i class="fas fa-link"></i> Enlaces rápidos</h3><div class="quick-links"><a href="#">Guía del supervisor de EE</a><a href="#">Cronograma 2025</a><a href="#">Bases de datos académicas</a><a href="#">Formato oficial de portada</a></div></div>
+                <div class="info-box" style="background: #fef7e0;"><h3><i class="fas fa-life-ring"></i> ¿Necesito apoyo?</h3><p>Equipo de tutores IB, bibliotecarios y mentores.</p><ul><li><strong>Email:</strong> coreib@sacooliveros.edu.pe</li><li><strong>Chat en vivo:</strong> Lunes a Viernes 9am - 5pm</li></ul><button class="btn-primary" style="margin-top: 20px; width:100%;">Solicitar apoyo ahora</button></div>
+            </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 16px;">
+            <div class="info-box"><h3><i class="fas fa-comment"></i> TOK: Herramientas destacadas</h3><ul><li>Ejemplos de ensayos TOK</li><li>Guía para la exposición TOK</li><li>Glosario de términos</li></ul></div>
+            <div class="info-box"><h3><i class="fas fa-feather-alt"></i> CAS: Reflexiones y portfolio</h3><ul><li>Plantillas para reflexiones CAS</li><li>Ejemplos de proyectos CAS exitosos</li><li>Checklist para evidencias</li></ul></div>
+        </div>
+    </div>
+
+    <!-- ATL -->
+    <div id="atlPage" class="page">
+        <div class="atl-banner">
+            <div class="banner-text"><h1>HABILIDADES DE APRENDIZAJE</h1><p>Desarrolla las habilidades que te acompañarán durante todo tu proceso de aprendizaje en el IB y en tu vida académica.</p></div>
+            <div class="banner-image"><i class="fas fa-chalkboard-user"></i><div class="comment">"Aprender a aprender es la llave del éxito en el siglo XXI"</div></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card"><h3>🧠 Habilidades de pensamiento</h3><p>Desarrolla tu pensamiento crítico, creativo y transferencial.</p><button class="btn-outline ver-recurso-btn">Ver recurso →</button></div>
+            <div class="skill-card"><h3>📚 Habilidades de investigación</h3><p>Formula preguntas, busca fuentes confiables, procesa datos.</p><button class="btn-outline ver-recurso-btn">Ver recurso →</button></div>
+            <div class="skill-card"><h3>💬 Habilidades de comunicación</h3><p>Expresa tus ideas con claridad, escucha activamente.</p><button class="btn-outline ver-recurso-btn">Ver recurso →</button></div>
+            <div class="skill-card"><h3>🤝 Habilidades sociales</h3><p>Colabora, respeta la diversidad, trabaja en equipo.</p><button class="btn-outline ver-recurso-btn">Ver recurso →</button></div>
+            <div class="skill-card"><h3>⏱ Habilidades de autogestión</h3><p>Organiza tu tiempo, emociones y metas de aprendizaje.</p><button class="btn-outline ver-recurso-btn">Ver recurso →</button></div>
+        </div>
+        <div class="atl-features">
+            <div class="feature-block"><h3><i class="fas fa-check-double"></i> Evaluar fuentes: CRAAP Test</h3><p>Aplica el método CRAAP: Currency, Relevance, Authority, Accuracy, Purpose.</p><button class="btn-outline">Descargar checklist</button></div>
+            <div class="feature-block"><h3><i class="fas fa-quote-right"></i> Citas y referencias</h3><p>APA 7ª ed., MLA, Chicago. Gestores bibliográficos: Zotero, Mendeley.</p><button class="btn-outline">Ver tutoriales →</button></div>
+            <div class="feature-block"><h3><i class="fas fa-gavel"></i> Integridad académica</h3><p>Honestidad intelectual, prevención del plagio, uso de Turnitin.</p><button class="btn-outline">Conoce más →</button></div>
+        </div>
+    </div>
+
+    <!-- IA -->
+    <div id="iaPage" class="page">
+        <div class="ia-banner">
+            <div class="banner-content">
+                <h1>IA: INTELIGENCIA ARTIFICIAL EN EL APRENDIZAJE</h1>
+                <p>Potencia tus habilidades académicas con herramientas de IA de manera ética y responsable. Aprende a usarla a tu favor evitando malas prácticas.</p>
+            </div>
+        </div>
+        <div class="ia-usage">
+            <div class="usage-block">
+                <h2>✅ USO CORRECTO DE LA IA</h2>
+                <div class="circle-buttons">
+                    <div class="circle-item"><div class="circle-btn" data-info="Brainstorming y generación de ideas"><i class="fas fa-lightbulb"></i></div><span>Ideas iniciales</span></div>
+                    <div class="circle-item"><div class="circle-btn" data-info="Resumir artículos largos"><i class="fas fa-file-alt"></i></div><span>Resumir textos</span></div>
+                    <div class="circle-item"><div class="circle-btn" data-info="Mejorar gramática y estilo"><i class="fas fa-spell-check"></i></div><span>Corregir estilo</span></div>
+                    <div class="circle-item"><div class="circle-btn" data-info="Organizar cronogramas"><i class="fas fa-tasks"></i></div><span>Planificar tareas</span></div>
+                    <div class="circle-item"><div class="circle-btn" data-info="Simular entrevistas o diálogos"><i class="fas fa-comments"></i></div><span>Practicar diálogos</span></div>
+                </div>
+            </div>
+            <div class="usage-block">
+                <h2>❌ USO INCORRECTO DE LA IA</h2>
+                <div class="circle-buttons">
+                    <div class="circle-item"><div class="circle-btn" data-info="Copiar texto generado sin atribución"><i class="fas fa-copy"></i></div><span>Copiar íntegro</span></div>
+                    <div class="circle-item"><div class="circle-btn" data-info="Hacer exámenes con IA"><i class="fas fa-user-secret"></i></div><span>Hacer trampa</span></div>
+                    <div class="circle-item"><div class="circle-btn" data-info="Crear datos o referencias falsas"><i class="fas fa-chart-line"></i></div><span>Inventar datos</span></div>
+                    <div class="circle-item"><div class="circle-btn" data-info="No verificar fuentes alucinadas"><i class="fas fa-question-circle"></i></div><span>No contrastar</span></div>
+                    <div class="circle-item"><div class="circle-btn" data-info="Depender completamente de IA"><i class="fas fa-handcuffs"></i></div><span>Dependencia total</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="ia-resources">
+            <div class="resource-col"><h3><i class="fas fa-balance-scale"></i> Guía para el uso ético</h3><p><strong>Principios clave:</strong></p><ul><li>Siempre cita cuando uses contenido generado por IA.</li><li>No entregues trabajos realizados íntegramente con IA.</li><li>Revisa y contrasta la información producida.</li></ul><button class="btn-outline">Descargar guía completa</button></div>
+            <div class="resource-col"><h3><i class="fas fa-comment-dots"></i> Ejemplo de prompts útiles</h3><p><strong>Para investigar:</strong> "Explícame el concepto de [tema] como si tuviera 15 años"</p><p><strong>Para organizar:</strong> "Genera un esquema para un ensayo sobre [tema]"</p><button class="btn-outline">Ver más ejemplos</button></div>
+            <div class="resource-col"><h3><i class="fas fa-tools"></i> Herramientas recomendadas</h3><p><strong>ChatGPT / Copilot</strong> – Apoyo en redacción.</p><p><strong>Perplexity.ai</strong> – Búsqueda con fuentes.</p><p><strong>Quillbot / Grammarly</strong> – Mejora de estilo.</p><button class="btn-outline">Acceder a recursos</button></div>
+            <div class="resource-col"><h3><i class="fas fa-file-contract"></i> Políticas IB sobre IA</h3><p><strong>Oficial IBO (2023-2025):</strong> El uso de IA debe declararse explícitamente.</p><p><strong>En Monografía y TOK:</strong> Describir cómo y en qué parte del proceso.</p><button class="btn-outline">Leer documento oficial</button></div>
+        </div>
+    </div>
+
+    <!-- ========== NUEVAS PÁGINAS ========== -->
+    <!-- BASE DE DATOS -->
+    <div id="basesPage" class="page">
+        <div class="page-banner bases-banner">
+    <div class="banner-content">
+        <h1>BASES DE DATOS</h1>
+        <p>Accede a fuentes académicas confiables para investigar, aprender y crear conocimiento.</p>
+    </div>
+</div>
+
+<div class="generic-intro" style="margin-bottom: 32px;">
+    <p>Explora una selección de bases de datos académicas, repositorios de acceso abierto y buscadores especializados que te ayudarán en tus investigaciones y proyectos del Programa del Diploma del IB.</p>
+</div>
+
+<!-- Sección: Bases de datos recomendadas -->
+<h2 class="section-title-db">📚 BASES DE DATOS RECOMENDADAS</h2>
+<div class="bases-grid">
+    <!-- thinkib -->
+    <div class="db-card">
+        <h3>INTHINKING</h3>
+        <p>Plataforma especializada en el Bachillerato Internacional con recursos, guías y materiales didácticos para docentes y estudiantes.</p>
+        <div class="db-footer">
+            <a href="https://thinkib.net/" class="btn-outline-small">Ir a INTHINKING →</a>
+            <span class="access-badge">Acceso Institucional</span>
+        </div>
+    </div>
+    <!-- JSTOR -->
+    <div class="db-card">
+        <h3>JSTOR</h3>
+        <p>Colección digital de revistas, libros y fuentes primarias en todas las áreas del conocimiento.</p>
+        <div class="db-footer">
+            <a href="#" class="btn-outline-small">Ir a JSTOR →</a>
+            <span class="access-badge">Acceso Institucional</span>
+        </div>
+    </div>
+    <!-- EBSCOhost -->
+    <div class="db-card">
+        <h3>EBSCOhost</h3>
+        <p>Base de datos multidisciplinaria con artículos académicos, ebooks y publicaciones especializadas.</p>
+        <div class="db-footer">
+            <a href="#" class="btn-outline-small">Ir a EBSCOhost →</a>
+            <span class="access-badge">Acceso Institucional</span>
+        </div>
+    </div>
+    <!-- ProQuest -->
+    <div class="db-card">
+        <h3>ProQuest</h3>
+        <p>Amplía colección de tesis, artículos de revistas, periódicos y recursos académicos.</p>
+        <div class="db-footer">
+            <a href="#" class="btn-outline-small">Ir a ProQuest →</a>
+            <span class="access-badge">Acceso Institucional</span>
+        </div>
+    </div>
+    <!-- GALE -->
+    <div class="db-card">
+        <h3>GALE</h3>
+        <p>Recursos académicos en historia, ciencias, literatura, arte y más.</p>
+        <div class="db-footer">
+            <a href="#" class="btn-outline-small">Ir a GALE →</a>
+            <span class="access-badge">Acceso Institucional</span>
+        </div>
+    </div>
+    <!-- Britannica Academic -->
+    <div class="db-card">
+        <h3>Britannica Academic</h3>
+        <p>Información confiable y revisada por expertos en todas las áreas del conocimiento.</p>
+        <div class="db-footer">
+            <a href="#" class="btn-outline-small">Ir a Britannica →</a>
+            <span class="access-badge">Acceso Institucional</span>
+        </div>
+    </div>
+    <!-- Google Scholar -->
+    <div class="db-card">
+        <h3>Google Scholar</h3>
+        <p>Buscar académico de artículos, tesis, libros y publicaciones científicas.</p>
+        <div class="db-footer">
+            <a href="#" class="btn-outline-small">Ir a Google Scholar →</a>
+            <span class="access-badge open-access">Acceso Abierto</span>
+        </div>
+    </div>
+</div>
+
+<!-- Repositorios de acceso abierto -->
+<h2 class="section-title-db">🌐 REPOSITORIOS DE ACCESO ABIERTO</h2>
+<div class="repos-list">
+    <ul>
+        <li><strong>Directory of Open Access Journals (DOAJ)</strong> – Revista académica de acceso abierto.</li>
+        <li><strong>Open Access Theses and Dissertations (OATD)</strong> – Tesis y disertaciones de universidades de todo el mundo.</li>
+        <li><strong>Google Books</strong> – Libros y catálogo de acceso limitado y abierto.</li>
+    </ul>
+    <a href="#" class="btn-outline" style="margin-top: 12px; display: inline-block;">Ver más repositorios →</a>
+</div>
+
+<!-- Cómo acceder? -->
+<h2 class="section-title-db">🔐 ¿CÓMO ACCEDER?</h2>
+<div class="steps-box">
+    <ol>
+        <li>Conéctate a la red del colegio o ingresa con tu cuenta institucional.</li>
+        <li>Selecciona la base de datos que necesitas.</li>
+        <li>Busca información usando palabras clave, temas o autores.</li>
+        <li>Envía la información y salida de manera oficial.</li>
+        <li>¿Necesitas ayuda?<br>Consulta las guías de investigación en la sección ATL o contacta al equipo de biblioteca.</li>
+    </ol>
+</div>
+
+<!-- Guías rápidas -->
+<h2 class="section-title-db">📘 GUÍAS RÁPIDAS</h2>
+<div class="guides-grid">
+    <div class="guide-card">1. Cómo buscar información académica.</div>
+    <div class="guide-card">2. Evaluación de fuentes: CRAAP Test.</div>
+    <div class="guide-card">3. Cómo citar fuentes correctamente (APA 7).</div>
+    <div class="guide-card">4. Uso ético de la información.</div>
+    <div class="guide-card full-width">5. Ver todas las guías →</div>
+</div>
+    </div>
+
+    <!-- ZONA DOCENTE -->
+    <div id="docentePage" class="page">
+        <div class="page-banner docente-banner">
+    <div class="banner-content">
+        <h1>ZONA DOCENTE</h1>
+        <p>Recursos y herramientas para planificar, enseñar y evaluar en el Programa del Diploma del IB.</p>
+    </div>
+</div>
+
+<div class="generic-intro" style="margin-bottom: 32px;">
+    <p>Aquí encontrarás planificaciones, rúbricas, guías y materiales de apoyo para tu labor docente.</p>
+</div>
+
+<!-- RECURSOS DESTACADOS (en forma de tarjetas horizontales) -->
+<div class="resources-highlight">
+    <h2 class="section-title-db">📚 RECURSOS DESTACADOS</h2>
+    <div class="highlight-grid">
+        <div class="highlight-card"><strong>Guías de asignatura IB</strong><br>Guías oficiales por materia y nivel.</div>
+        <div class="highlight-card"><strong>Políticas y documentos IB</strong><br>Documentos oficiales y políticas del IB.</div>
+        <div class="highlight-card"><strong>Calendario académico IB</strong><br>Fechas clave y plazos importantes.</div>
+        <div class="highlight-card"><strong>Actualizaciones IB</strong><br>Novedades y continuidades importantes.</div>
+    </div>
+    <div style="text-align: right; margin-top: 12px;">
+        <a href="#" class="btn-outline">Ver todos los recursos →</a>
+    </div>
+</div>
+
+<!-- CARPETA COMPARTIDA (GOOGLE DRIVE) - estilo lista con carpetas -->
+<div class="shared-folder">
+    <h2 class="section-title-db">📁 CARPETA COMPARTIDA (GOOGLE DRIVE)</h2>
+    <p>Accede a los materiales organizados por categorías.</p>
+    <div class="folder-list">
+        <div class="folder-item"><i class="fas fa-folder-open"></i> <strong>Planificaciones</strong> <span class="folder-count">24 archivos</span></div>
+        <div class="folder-item"><i class="fas fa-folder-open"></i> <strong>Rúbricas</strong> <span class="folder-count">18 archivos</span></div>
+        <div class="folder-item"><i class="fas fa-folder-open"></i> <strong>Evaluaciones</strong> <span class="folder-count">10 archivos</span></div>
+        <div class="folder-item"><i class="fas fa-folder-open"></i> <strong>Material de apoyo</strong> <span class="folder-count">20 archivos</span></div>
+        <div class="folder-item"><i class="fas fa-folder-open"></i> <strong>Capacitación</strong> <span class="folder-count">15 archivos</span></div>
+        <div class="folder-item"><i class="fas fa-folder-open"></i> <strong>Libros</strong> <span class="folder-count">9 archivos</span></div>
+    </div>
+    <div class="note-exclamation" style="margin-top: 20px;">
+        <i class="fas fa-lock"></i>
+        <p>Sólo el personal docente autorizado puede editar o subir archivos. Mantengamos esta carpeta organizada para el beneficio de todos.</p>
+    </div>
+</div>
+
+<!-- HERRAMIENTAS DOCENTES + PRÓXIMAS REUNIONES (dos columnas) -->
+<div class="two-columns-docente">
+    <div class="tools-box">
+        <h2 class="section-title-db">🛠️ HERRAMIENTAS DOCENTES</h2>
+        <ul class="tools-list">
+            <li><strong>Generador de rúbricas</strong> – Crea rúbricas personalizadas.</li>
+            <li><strong>Banco de preguntas</strong> – Repositorio de preguntas por asignatura.</li>
+            <li><strong>Plantillas de evaluación</strong> – Formato libre para usar.</li>
+            <li><strong>Recursos ATL para el aula</strong> – Estrategias y actividades ATL.</li>
+        </ul>
+        <a href="#" class="btn-outline" style="margin-top: 16px; display: inline-block;">Ver todas las herramientas →</a>
+    </div>
+    <div class="events-box">
+        <h2 class="section-title-db">📅 PRÓXIMAS REUNIONES Y CAPACITACIONES</h2>
+        <div class="event-card">
+            <strong>Reunión de Coordinadores</strong><br>
+            Martes, 28 de mayo · 4:00 p.m. - 5:30 p.m.<br>
+            Sala de reuniones 2
+        </div>
+        <div class="event-card">
+            <strong>Taller: Evaluación IB</strong><br>
+            Sábado, 1 de junio · 9:00 a.m. - 12:00 p.m.<br>
+            Auditorio principal
+        </div>
+        <div class="event-card">
+            <strong>Capacitación ATL</strong><br>
+            Miércoles, 5 de junio · 3:30 p.m. - 5:00 p.m.<br>
+            Laboratorio de campus
+        </div>
+    </div>
+</div>
+
+<!-- COMUNIDAD DOCENTE -->
+<div class="community-box">
+    <h2 class="section-title-db">🤝 COMUNIDAD DOCENTE</h2>
+    <p>Comparte experiencias, recursos y buenas prácticas con otros docentes.</p>
+    <div class="community-links">
+        <a href="#" class="btn-outline"><i class="fas fa-comments"></i> Foro docente</a>
+        <a href="#" class="btn-outline"><i class="fas fa-share-alt"></i> Compartir recursos</a>
+        <a href="#" class="btn-outline"><i class="fas fa-star"></i> Buenas prácticas</a>
+    </div>
+</div>
+    </div>
+
+    <!-- SOPORTE -->
+    <div id="soportePage" class="page">
+       <div class="page-banner soporte-banner">
+    <div class="banner-content">
+        <h1>SOPORTE</h1>
+        <p><strong>Estamos aquí para ayudarte</strong></p>
+        <p>Nuestro equipo está disponible para brindarte apoyo con el uso de la IB Virtual Library y resolver cualquier duda o inconveniente que tengas.</p>
+    </div>
+</div>
+
+<!-- ¿CÓMO PODEMOS AYUDARTE? -->
+<div class="help-section">
+    <h2 class="section-title-db">🤝 ¿CÓMO PODEMOS AYUDARTE?</h2>
+    <div class="help-cards">
+        <div class="help-card">
+            <i class="fas fa-envelope"></i>
+            <h3>CORREO ELECTRÓNICO</h3>
+            <p>Escríbenos y te respondaremos a la brevedad.</p>
+            <a href="mailto:biblioteca@sacio.edu.pe">biblioteca@sacio.edu.pe</a>
+            <button class="btn-outline-small">Enviar correo</button>
+        </div>
+        <div class="help-card">
+            <i class="fas fa-comments"></i>
+            <h3>CHAT EN LÍNEA</h3>
+            <p>Conéctate con nuestro equipo en tiempo real.</p>
+            <p class="time">Lunes a viernes: 7:30 a. m. a 4:30 p. m.</p>
+            <button class="btn-outline-small">Iniciar chat</button>
+        </div>
+        <div class="help-card">
+            <i class="fas fa-file-alt"></i>
+            <h3>FORMULARIO DE SOPORTE</h3>
+            <p>Cuéntanos tu consulta o problema y te ayudaremos.</p>
+            <button class="btn-outline-small">Completar formulario →</button>
+        </div>
+        <div class="help-card">
+            <i class="fas fa-phone-alt"></i>
+            <h3>TELÉFONO</h3>
+            <p>Llámanos si necesitas asistencia inmediata.</p>
+            <p class="phone">(01) 212-9900 Anexo: 123</p>
+            <button class="btn-outline-small">Ver extensiones</button>
+        </div>
+    </div>
+</div>
+
+<!-- PREGUNTAS FRECUENTES + GUÍAS (dos columnas) -->
+<div class="faq-guides-row">
+    <div class="faq-box">
+        <h2 class="section-title-db">❓ PREGUNTAS FRECUENTES</h2>
+        <ul class="faq-list">
+            <li>¿Cómo puedo acceder a los recursos?</li>
+            <li>¿Qué hago si no puedo abrir un libro o artículo?</li>
+            <li>¿Cómo creo una cuenta en una base de datos?</li>
+            <li>¿Puedo acceder desde mi casa?</li>
+            <li>¿Cómo citar correctamente las fuentes?</li>
+        </ul>
+        <a href="#" class="btn-outline">Ver todas las preguntas →</a>
+    </div>
+    <div class="guides-box">
+        <h2 class="section-title-db">📘 GUÍAS Y TUTORIALES</h2>
+        <div class="guide-item"><i class="fas fa-file-pdf"></i> <strong>Guía rápida:</strong> Primeros pasos en la IB Virtual Library <span class="badge">PDF</span></div>
+        <div class="guide-item"><i class="fas fa-video"></i> <strong>Cómo buscar información eficazmente</strong> <span class="badge">Video</span></div>
+        <div class="guide-item"><i class="fas fa-video"></i> <strong>Uso de bases de datos académicas</strong> <span class="badge">Video</span></div>
+        <div class="guide-item"><i class="fas fa-file-pdf"></i> <strong>Citación y referencias en el formato APA</strong> <span class="badge">PDF</span></div>
+        <a href="#" class="btn-outline" style="margin-top: 16px;">Ver todas las guías →</a>
+    </div>
+</div>
+
+<!-- HORARIOS DE ATENCIÓN + SUGERENCIA -->
+<div class="hours-suggestion">
+    <div class="hours-box">
+        <h2 class="section-title-db">🕒 HORARIOS DE ATENCIÓN</h2>
+        <ul class="hours-list">
+            <li><strong>Chat en línea:</strong> Lunes a viernes: 7:30 a. m. – 4:30 p. m.</li>
+            <li><strong>Correo electrónico:</strong> Lunes a viernes: 7:30 a. m. – 6:00 p. m.</li>
+            <li><strong>Teléfono:</strong> Lunes a viernes: 7:30 a. m. – 5:00 p. m.</li>
+        </ul>
+    </div>
+    <div class="suggestion-box">
+        <i class="fas fa-lightbulb"></i>
+        <div>
+            <h3>¿Tienes una sugerencia?</h3>
+            <p>Tu opinión es muy importante para nosotros. Ayúdanos a mejorar la IB Virtual Library.</p>
+            <button class="btn-primary">Enviar sugerencia →</button>
+        </div>
+    </div>
+</div>
+    </div>
+
+    <!-- BIENESTAR -->
+    <div id="bienestarPage" class="page">
+         <div class="banner-content">
+        <h1>BIENESTAR ESTUDIANTIL</h1>
+        <p>Tu salud mental y equilibrio son nuestra prioridad. Apoyo emocional, gestión del estrés y consejos para el bienestar integral durante el IB.</p>
+    </div>
+</div>
+
+<!-- Tarjetas de apoyo principal -->
+<div class="wellness-grid">
+    <div class="wellness-card">
+        <i class="fas fa-heartbeat"></i>
+        <h3>Apoyo psicológico</h3>
+        <p>Agenda una cita con nuestros psicólogos escolares. Confidencialidad garantizada.</p>
+        <button class="btn-outline-small">Solicitar cita →</button>
+    </div>
+    <div class="wellness-card">
+        <i class="fas fa-spa"></i>
+        <h3>Mindfulness y relajación</h3>
+        <p>Ejercicios guiados de respiración, meditación y técnicas para reducir la ansiedad.</p>
+        <button class="btn-outline-small">Acceder a las guías →</button>
+    </div>
+    <div class="wellness-card">
+        <i class="fas fa-calendar-week"></i>
+        <h3>Talleres de gestión del tiempo</h3>
+        <p>Aprende a organizarte mejor, evitar la procrastinación y equilibrar tus cargas académicas.</p>
+        <button class="btn-outline-small">Ver próximos talleres →</button>
+    </div>
+    <div class="wellness-card">
+        <i class="fas fa-hand-holding-heart"></i>
+        <h3>Grupos de apoyo entre pares</h3>
+        <p>Espacios de contención donde estudiantes comparten experiencias y estrategias.</p>
+        <button class="btn-outline-small">Unirse a un grupo →</button>
+    </div>
+    <div class="wellness-card">
+        <i class="fas fa-bed"></i>
+        <h3>Hábitos saludables</h3>
+        <p>Guías para mejorar tu sueño, alimentación y actividad física durante el programa IB.</p>
+        <button class="btn-outline-small">Descargar guías →</button>
+    </div>
+</div>
+
+<!-- Recursos destacados: dos columnas -->
+<div class="wellness-resources">
+    <div class="resource-box">
+        <h2 class="section-title-db">📘 GUÍAS DE AUTOCUIDADO</h2>
+        <ul class="resource-list">
+            <li><i class="fas fa-file-pdf"></i> Manejo del estrés académico – PDF</li>
+            <li><i class="fas fa-video"></i> Meditación guiada de 10 minutos – Video</li>
+            <li><i class="fas fa-file-pdf"></i> Cómo dormir mejor – PDF</li>
+            <li><i class="fas fa-chalkboard-user"></i> Taller de resiliencia – Grabación</li>
+        </ul>
+        <a href="#" class="btn-outline">Ver todas las guías →</a>
+    </div>
+    <div class="resource-box">
+        <h2 class="section-title-db">🗓️ PRÓXIMAS ACTIVIDADES DE BIENESTAR</h2>
+        <div class="event-card">
+            <strong>🧘 Sesión de mindfulness</strong><br>
+            Martes, 20 de mayo – 4:00 p.m. | Sala de bienestar
+        </div>
+        <div class="event-card">
+            <strong>📚 Taller: Cómo organizar tu tiempo</strong><br>
+            Jueves, 22 de mayo – 3:30 p.m. | Aula virtual
+        </div>
+        <div class="event-card">
+            <strong>💬 Grupo de conversación</strong><br>
+            Viernes, 30 de mayo – 12:00 p.m. | Café literario
+        </div>
+        <a href="#" class="btn-outline">Calendario completo →</a>
+    </div>
+</div>
+
+<!-- Contacto y recursos de emergencia -->
+<div class="wellness-emergency">
+    <div class="emergency-box">
+        <i class="fas fa-phone-alt"></i>
+        <div>
+            <h3>Línea de bienestar</h3>
+            <p>+51 997 506 894 · <strong>bienestar@sacooliveros.edu.pe</strong></p>
+            <p class="small">Atención 24/7 para emergencias emocionales.</p>
+        </div>
+    </div>
+    <div class="emergency-box">
+        <i class="fas fa-hand-holding-heart"></i>
+        <div>
+            <h3>¿Necesitas hablar ahora?</h3>
+            <p>Escanea el código QR para acceder al chat confidencial con nuestros psicólogos.</p>
+            <button class="btn-primary">Iniciar chat anónimo</button>
+        </div>
+    </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div style="text-align:center; font-size:0.75rem; margin-bottom:16px;">Indagadores · Íntegros · Solidarios · Audaces · Aquilinaides · Reflexivos</div>
+        <div style="display:flex; justify-content:center; gap:24px; flex-wrap:wrap; margin-bottom:16px;">
+            <a href="#" style="color:#d4af37; text-decoration:none;">Integridad Académica</a>
+            <a href="#" style="color:#d4af37; text-decoration:none;">Política de Privacidad</a>
+            <a href="#" style="color:#d4af37; text-decoration:none;">Contacto</a>
+        </div>
+        <p style="text-align:center; font-size:0.7rem;">© 2025 Saco Oliveros - Monterrico Virtual Library. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<!-- Modal calendario -->
+<div id="calendarModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); backdrop-filter:blur(4px); align-items:center; justify-content:center; z-index:200;">
+    <div style="background:white; max-width:550px; width:90%; border-radius:36px; padding:24px;">
+        <h3>📅 Calendario académico 2025</h3>
+        <div id="fullCalendarMay"></div>
+        <div id="fullCalendarJun" style="margin-top:20px;"></div>
+        <button id="closeModalBtn" class="btn-outline" style="margin-top:20px;">Cerrar</button>
+    </div>
+</div>
+
+<script>
+    // ======================= SPA Navegación =======================
+    const pages = {
+        home: document.getElementById('homePage'),
+        asignaturas: document.getElementById('asignaturasPage'),
+        core: document.getElementById('corePage'),
+        atl: document.getElementById('atlPage'),
+        ia: document.getElementById('iaPage'),
+        bases: document.getElementById('basesPage'),
+        docente: document.getElementById('docentePage'),
+        soporte: document.getElementById('soportePage'),
+        bienestar: document.getElementById('bienestarPage')
+    };
+    const navBtns = document.querySelectorAll('.nav-btn');
+    function showPage(pageId) {
+        Object.keys(pages).forEach(key => pages[key].classList.remove('active-page'));
+        pages[pageId].classList.add('active-page');
+        navBtns.forEach(btn => {
+            if(btn.dataset.page === pageId) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+        if(pageId === 'asignaturas') loadResourcesByGroup(document.getElementById('groupSelector').value);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    navBtns.forEach(btn => btn.addEventListener('click', () => showPage(btn.dataset.page)));
+    document.querySelectorAll('[data-nav]').forEach(el => {
+        el.addEventListener('click', (e) => {
+            const target = el.getAttribute('data-nav');
+            if(target && pages[target]) showPage(target);
+        });
+    });
+    document.getElementById('verRecursoBtn')?.addEventListener('click', () => showPage('asignaturas'));
+
+    // Buscador home
+    document.getElementById('homeSearch')?.addEventListener('input', (e) => {
+        if(e.target.value.length > 2) alert(`🔍 Búsqueda: "${e.target.value}". Explora las secciones de la biblioteca.`);
+    });
+
+    // Google Calendar
+    function addToGoogleCalendar(title, startDate) {
+        const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${startDate}&details=Evento%20académico%20IB&sf=true`;
+        window.open(url, '_blank');
+    }
+    document.querySelectorAll('.google-link').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const title = btn.getAttribute('data-title');
+            const date = btn.getAttribute('data-date');
+            if(title && date) addToGoogleCalendar(title, date);
+        });
+    });
+
+    // Calendario mini
+    function buildMayCalendar(containerId) {
+        const grid = document.getElementById(containerId);
+        if(!grid) return;
+        grid.innerHTML = '';
+        const week = ['L','M','M','J','V','S','D'];
+        week.forEach(d => { let div = document.createElement('div'); div.className='cal-day cal-weekday'; div.innerText=d; grid.appendChild(div); });
+        for(let i=0;i<3;i++){ let e=document.createElement('div'); e.className='cal-day'; e.innerText=''; grid.appendChild(e);}
+        for(let d=1;d<=31;d++){
+            let cell = document.createElement('div'); cell.className='cal-day'; cell.innerText=d;
+            if(d===15 || d===28){
+                cell.classList.add('event-day');
+                cell.style.cursor = 'pointer';
+                cell.addEventListener('click', () => {
+                    let title = d===15 ? 'Entrega borrador EE' : 'Presentaciones TOK';
+                    addToGoogleCalendar(title, `202505${d.toString().padStart(2,'0')}T100000`);
+                });
+            }
+            grid.appendChild(cell);
+        }
+    }
+    buildMayCalendar('miniCalendar');
+
+    // Modal calendario completo
+    function renderFullModal() {
+        const mayDiv = document.getElementById('fullCalendarMay');
+        const junDiv = document.getElementById('fullCalendarJun');
+        if(mayDiv){
+            mayDiv.innerHTML = '<h4>Mayo 2025</h4><div class="calendar-grid" id="modalMayGrid"></div>';
+            const mg = document.getElementById('modalMayGrid');
+            if(mg){
+                const wd = ['L','M','M','J','V','S','D']; wd.forEach(d=>{let cd=document.createElement('div');cd.className='cal-day cal-weekday';cd.innerText=d;mg.appendChild(cd);});
+                for(let i=0;i<3;i++){let e=document.createElement('div');e.innerText='';mg.appendChild(e);}
+                for(let d=1;d<=31;d++){let cell=document.createElement('div');cell.className='cal-day';cell.innerText=d; if(d===15||d===28){cell.classList.add('event-day');cell.style.cursor='pointer';cell.addEventListener('click',()=>{let tit=d===15?'Entrega borrador EE':'Presentaciones TOK'; addToGoogleCalendar(tit,`202505${d.toString().padStart(2,'0')}T100000`);});} mg.appendChild(cell);}
+            }
+        }
+        if(junDiv){
+            junDiv.innerHTML = '<h4>Junio 2025</h4><div class="calendar-grid" id="modalJunGrid"></div>';
+            const jg = document.getElementById('modalJunGrid');
+            if(jg){
+                const wd = ['L','M','M','J','V','S','D']; wd.forEach(d=>{let cd=document.createElement('div');cd.className='cal-day cal-weekday';cd.innerText=d;jg.appendChild(cd);});
+                const first = new Date(2025,5,1); let off = (first.getDay()===0?6:first.getDay()-1);
+                for(let i=0;i<off;i++){let e=document.createElement('div');e.innerText='';jg.appendChild(e);}
+                for(let d=1;d<=30;d++){let cell=document.createElement('div');cell.className='cal-day';cell.innerText=d; if(d===10||d===22){cell.classList.add('event-day');cell.style.cursor='pointer';cell.addEventListener('click',()=>{let tit=d===10?'Exámenes internos':'Entrega final Monografía'; addToGoogleCalendar(tit,`202506${d.toString().padStart(2,'0')}T100000`);});} jg.appendChild(cell);}
+            }
+        }
+    }
+    document.getElementById('fullCalendarBtn')?.addEventListener('click', () => {
+        document.getElementById('calendarModal').style.display = 'flex';
+        renderFullModal();
+    });
+    document.getElementById('closeModalBtn')?.addEventListener('click', () => {
+        document.getElementById('calendarModal').style.display = 'none';
+    });
+    window.addEventListener('click', (e) => { if(e.target === document.getElementById('calendarModal')) document.getElementById('calendarModal').style.display='none'; });
+
+    // Recursos Asignaturas
+    const resourcesDB = {
+        1: { subjects: [ { name:"Lengua A: Literatura NS/NM", level:"NS/NM", resources:["Guía de análisis literario","Ejemplos de ensayos (Paper 1)"] } ] },
+        2: { subjects: [ { name:"Inglés B NS/NM", level:"NS/NM", resources:["Simulacros orales","Vocabulario temático"] } ] },
+        3: { subjects: [ { name:"Historia NS/NM", level:"NS/NM", resources:["Análisis de fuentes","Líneas de tiempo"] } ] },
+        4: { subjects: [ { name:"Biología NS/NM", level:"NS/NM", resources:["Simulaciones laboratorio","Guías de disección"] } ] },
+        5: { subjects: [ { name:"Matemáticas AA NS/NM", level:"NS/NM", resources:["Ejercicios de cálculo","Past papers"] } ] },
+        6: { subjects: [ { name:"Artes Visuales NS/NM", level:"NS/NM", resources:["Guía del portfolio","Análisis de obras"] } ] }
+    };
+    function loadResourcesByGroup(groupId) {
+        const container = document.getElementById('resourcesDynamicContainer');
+        if(!container) return;
+        const group = resourcesDB[groupId];
+        if(!group) { container.innerHTML = '<p>No hay recursos.</p>'; return; }
+        let html = '';
+        group.subjects.forEach(subj => {
+            html += `<div class="subject-card"><h3><i class="fas fa-book"></i> ${subj.name}</h3><span style="background:#eef3fc; padding:4px 12px; border-radius:40px;">Nivel: ${subj.level}</span><ul style="margin-top:16px;">${subj.resources.map(r => `<li><i class="fas fa-check-circle" style="color:#d4af37;"></i> ${r}</li>`).join('')}</ul><button class="btn-outline">Ver materiales →</button></div>`;
+        });
+        container.innerHTML = html;
+    }
+    document.getElementById('groupSelector')?.addEventListener('change', (e) => loadResourcesByGroup(e.target.value));
+    if(document.getElementById('asignaturasPage').classList.contains('active-page')) loadResourcesByGroup('1');
+
+    // Eventos para botones circulares de IA
+    document.querySelectorAll('.circle-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const parent = btn.closest('.usage-block');
+            const tipo = parent.querySelector('h2').innerText.includes('CORRECTO') ? 'correcto' : 'incorrecto';
+            const info = btn.getAttribute('data-info') || '';
+            alert(`💡 Uso ${tipo}: ${info}`);
+        });
+    });
+
+    // Eventos para botones "Ver recurso" en ATL
+    document.querySelectorAll('.ver-recurso-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            alert('Próximamente: Material detallado sobre esta habilidad. Consulta la sección de recursos.');
+        });
+    });
+</script>
+</body>
+</html>
