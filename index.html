@@ -1230,6 +1230,63 @@
     object-fit: cover;
     display: block;
 }
+    
+        /* ========== UNIVERSIDADES ========== */
+        .universities-banner {
+            background: linear-gradient(115deg, #0a2946, #1e4a76);
+            border-radius: 32px;
+            padding: 32px 24px;
+            margin: 28px 0;
+            color: white;
+            text-align: center;
+        }
+        .universities-banner h1 { font-size: clamp(1.7rem, 4vw, 2.2rem); margin: 12px 0; }
+        .universities-banner p { max-width: 640px; margin: 0 auto; }
+        .universities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+            gap: 24px;
+            margin: 28px 0 40px;
+        }
+        .university-card {
+            --university-color: #1e4a76;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 28px 24px;
+            border: 1px solid #e2edf7;
+            border-top: 5px solid var(--university-color);
+            border-radius: 28px;
+            background: white;
+            color: #0a1c2f;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,.04);
+            transition: transform .2s, box-shadow .2s;
+        }
+        .university-card:hover { transform: translateY(-5px); box-shadow: 0 10px 24px rgba(10,41,70,.12); }
+        .university-card:focus-visible { outline: 3px solid #d4af37; outline-offset: 5px; }
+        .university-icon {
+            width: 88px; height: 88px; display: grid; place-items: center;
+            border-radius: 50%; background: #f4f8fe; color: var(--university-color);
+        }
+        .university-icon svg { width: 48px; height: 48px; }
+        .university-abbr { color: var(--university-color); font-size: 1.1rem; font-weight: 800; margin: 14px 0 6px; }
+        .university-card h2 { font-size: 1.15rem; line-height: 1.4; margin-bottom: 10px; }
+        .university-card p { color: #4a627a; margin-bottom: 24px; }
+        .university-link { margin-top: auto; background: #1e4a76; color: white; padding: 10px 18px; border-radius: 60px; font-weight: 700; font-size: .9rem; }
+        @media (prefers-reduced-motion: reduce) { .university-card { transition: none; } .university-card:hover { transform: none; } }
+    
+        .university-logo {
+            width: 100%; height: 120px; display: flex;
+            align-items: center; justify-content: center;
+            margin-bottom: 12px; padding: 12px;
+            border-radius: 16px; background: #fff;
+        }
+        .university-logo img {
+            display: block; width: 100%; max-width: 200px;
+            height: 100px; object-fit: contain;
+        }
     </style>
 </head>
 <body>
@@ -1263,6 +1320,7 @@
                 <button data-page="atl" class="nav-btn">ATL</button>
                 <button data-page="ia" class="nav-btn">IA</button>
                 <button data-page="bases" class="nav-btn">Base de Datos</button>
+                <button type="button" data-page="universidades" class="nav-btn"><i class="fas fa-university" aria-hidden="true"></i> Universidades</button>
                 <button data-page="docente" class="nav-btn">Zona Docente</button>
                 <button data-page="soporte" class="nav-btn">Soporte</button>
                 <button data-page="bienestar" class="nav-btn">Bienestar</button>
@@ -1272,6 +1330,52 @@
 </div>
 
 <main class="container">
+    <!-- UNIVERSIDADES -->
+    <section id="universidadesPage" class="page generic-page" aria-labelledby="universidadesTitle">
+        <div class="universities-banner">
+            <i class="fas fa-university" style="font-size: 2.5rem; color: #d4af37;" aria-hidden="true"></i>
+            <h1 id="universidadesTitle">Universidades</h1>
+            <p>Explora las bibliotecas y los catálogos de estas universidades. Selecciona una institución para visitar su biblioteca en una nueva pestaña.</p>
+        </div>
+        <div class="universities-grid">
+            <a class="university-card" style="--university-color: #247548;" href="https://biblioteca.urp.edu.pe/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Catálogo de biblioteca de Universidad Ricardo Palma en una nueva pestaña">
+                <span class="university-logo"><img src="imagenes/Ricardo.jpg" loading="lazy"></span>
+                <span class="university-abbr">URP</span>
+                <h2>Universidad Ricardo Palma</h2>
+                <p>Catálogo de biblioteca</p>
+                <span class="university-link">Visitar biblioteca <span aria-hidden="true">↗</span></span>
+            </a>
+            <a class="university-card" style="--university-color: #173c75;" href="https://usil.edu.pe/biblioteca/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Biblioteca USIL de Universidad San Ignacio de Loyola en una nueva pestaña">
+                <span class="university-logo"><img src="imagenes/usil.jpg" alt="Logotipo de Universidad San Ignacio de Loyola" width="200" height="100" loading="lazy"></span>
+                <span class="university-abbr">USIL</span>
+                <h2>Universidad San Ignacio de Loyola</h2>
+                <p>Biblioteca USIL</p>
+                <span class="university-link">Visitar biblioteca <span aria-hidden="true">↗</span></span>
+            </a>
+            <a class="university-card" style="--university-color: #b84f18;" href="https://www.ulima.edu.pe/biblioteca" target="_blank" rel="noopener noreferrer" aria-label="Abrir Biblioteca de la Universidad de Lima de Universidad de Lima en una nueva pestaña">
+                <span class="university-logo"><img src="imagenes/udelima.jpg" width="200" height="100" loading="lazy"></span>
+                <span class="university-abbr">ULIMA</span>
+                <h2>Universidad de Lima</h2>
+                <p>Biblioteca de la Universidad de Lima</p>
+                <span class="university-link">Visitar biblioteca <span aria-hidden="true">↗</span></span>
+            </a>
+            <a class="university-card" style="--university-color: #943346;" href="https://biblioteca.cayetano.edu.pe/" target="_blank" rel="noopener noreferrer" aria-label="Abrir CREA · Biblioteca UPCH de Universidad Peruana Cayetano Heredia en una nueva pestaña">
+                <span class="university-logo"><img src="imagenes/upch.jpg" width="200" height="100" loading="lazy"></span>
+                <span class="university-abbr">UPCH</span>
+                <h2>Universidad Peruana Cayetano Heredia</h2>
+                <p>CREA · Biblioteca UPCH</p>
+                <span class="university-link">Visitar biblioteca <span aria-hidden="true">↗</span></span>
+            </a>
+            <a class="university-card" style="--university-color: #14647b;" href="https://biblioteca.cientifica.edu.pe/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Biblioteca Científica · Catálogo Koha de Universidad Científica del Sur en una nueva pestaña">
+                <span class="university-logo"><img src="imagenes/unicientif.jpg" width="200" height="100" loading="lazy"></span>
+                <span class="university-abbr">CIENTÍFICA</span>
+                <h2>Universidad Científica del Sur</h2>
+                <p>Biblioteca Científica · Catálogo Koha</p>
+                <span class="university-link">Visitar biblioteca <span aria-hidden="true">↗</span></span>
+            </a>
+        </div>
+    </section>
+
     <!-- HOME -->
     <div id="homePage" class="page active-page">
 
@@ -1511,7 +1615,7 @@
         <p>Es una extensa biblioteca digital e investigativa sin fines de lucro</p>
         <div class="db-footer">
             <a href="https://www.jstor.org/" class="btn-outline-small">Ir a EBSCOhost →</a>
-            <span class="access-badge">Acceso Institucional</span>
+            <span class="access-badge open-access">Acceso Abierto</span>
         </div>
     </div>
     <!-- ProQuest -->
@@ -1520,7 +1624,7 @@
         <p>Es una biblioteca digital sin fines de lucro fundada en 1996. Su objetivo es preservar el conocimiento y la cultura de la humanidad en la era digital, ofreciendo acceso universal, gratuito y abierto a millones de archivos, páginas web, libros y materiales multimedia.</p>
         <div class="db-footer">
             <a href="https://archive.org/" class="btn-outline-small">Ir a ProQuest →</a>
-            <span class="access-badge">Acceso Institucional</span>
+            <span class="access-badge open-access">Acceso Abierto</span>
         </div>
     </div>
     <!-- GALE -->
@@ -1529,7 +1633,7 @@
         <p>Es una plataforma global que tiene como objetivo reunir y organizar todos los libros académicos en acceso abierto (Open Access) del mundo en un solo lugar. Fue desarrollada por Knowledge Unlatched para ofrecer acceso gratuito a publicaciones científicas revisadas por pares.</p>
         <div class="db-footer">
             <a href="https://openresearchlibrary.org/home" class="btn-outline-small">Ir a GALE →</a>
-            <span class="access-badge">Acceso Institucional</span>
+            <span class="access-badge open-access">Acceso Abierto</span>
         </div>
     </div>
     <!-- Britannica Academic -->
@@ -1538,7 +1642,7 @@
         <p>BASE es uno de los motores de búsqueda más extensos del mundo, especialmente para recursos web académicos.</p>
         <div class="db-footer">
             <a href="https://www.base-search.net/" class="btn-outline-small">Ir a Britannica →</a>
-            <span class="access-badge">Acceso Institucional</span>
+            <span class="access-badge open-access">Acceso Abierto</span>
         </div>
     </div>
     <!-- Google Scholar -->
@@ -1896,6 +2000,7 @@
         atl: document.getElementById('atlPage'),
         ia: document.getElementById('iaPage'),
         bases: document.getElementById('basesPage'),
+        universidades: document.getElementById('universidadesPage'),
         docente: document.getElementById('docentePage'),
         soporte: document.getElementById('soportePage'),
         bienestar: document.getElementById('bienestarPage')
